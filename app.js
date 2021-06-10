@@ -1,7 +1,8 @@
 const vm = new Vue({
     el: "#app",
     data: {
-        produtos: []
+        produtos: [],
+        produto: false,
     },
     filters: {
         numeroPreco(valor){
@@ -10,16 +11,20 @@ const vm = new Vue({
     },
     methods: {
         fetchProdutos() {
-            // fazendo o fetch dos dados da api local
             fetch("./api/produtos.json")
             .then(r => r.json())
             .then(r => {
                 this.produtos = r
             })
+        },
+        fetchProduto(id) {
+            fetch(`./api/produtos/${id}/dados.json`)
+            .then(r => r.json())
+            .then(r => {
+                this.produto = r
+            })
         }
     },
-    // no momento da criação (created)
-    // quero que ative o método que faz o fetch de produtos
     created() {
         this.fetchProdutos();
     }
