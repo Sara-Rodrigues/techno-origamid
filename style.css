@@ -1,11 +1,10 @@
-h1, h2, body, ul, li {
+body, h1, h2, ul, li, p {
     padding: 0px;
     margin: 0px;
 }
 
 ul {
     list-style: none;
-    ;
 }
 
 * {
@@ -13,7 +12,7 @@ ul {
 }
 
 body {
-    background: linear-gradient(to right, #1a1a1a 30%, #fff 30%);
+    background: linear-gradient(to right, #1a1a1a 30%, #ffffff 30%);
     font-family: "Noto Serif";
 }
 
@@ -21,18 +20,18 @@ body {
     padding: 0 80px;
 }
 
+/* LISTA PRODUTOS */
+
 .produtos {
     max-width: 900px;
-    margin-top: 100px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 100px auto 0 auto;
 }
 
 .produto {
     display: flex;
     align-items: center;
     margin-bottom: 40px;
-    background: white;
+    background: #ffffff;
     box-shadow: 0 0 2rem rgba(0, 0, 0, .1);
     cursor: pointer;
 }
@@ -51,7 +50,7 @@ body {
     color: rgba(0, 0, 0, .5);
 }
 
-/* Modal */
+/* MODAL */
 
 .modal::before {
     content: "";
@@ -64,10 +63,10 @@ body {
 }
 
 .modal {
-    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: absolute;
     top: 0px;
     left: 0px;
     width: 100%;
@@ -75,17 +74,43 @@ body {
 }
 
 .modal_container {
+    position: relative;
     background: linear-gradient(to right, transparent 250px, white 250px);
+    z-index: 1;
     display: grid;
-    grid-gap: 50px;
     align-items: end;
-    padding: 0px 50px 50px 0;
-    animation: produto .3s forwards;
+    grid-gap: 50px;
+    padding: 50px 50px 50px 0;
+    animation: fadeIn .3s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate3D(50px, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3D(0px, 0, 0);
+    }
+}
+
+.modal_fechar {
+    border-radius: 50%;
+    border: 2px solid #000;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 1rem;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, .1), 0px 4px 10px rgba(0, 0, 0, .2);
+    cursor: pointer;
 }
 
 .modal_img {
-    margin-top: 50px;
-    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1), 0px 4px 10px rgba(0, 0, 0, 0.2);
+    grid-column: 1;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, .1), 0px 4px 10px rgba(0, 0, 0, .2);
 }
 
 .modal_img img {
@@ -94,6 +119,7 @@ body {
 }
 
 .modal_dados {
+    grid-column: 2;
     max-width: 600px;
 }
 
@@ -105,10 +131,10 @@ body {
     margin-top: 80px;
     background: #000;
     cursor: pointer;
-    color: white;
+    color: #ffffff;
+    border: none;
     font-size: 1rem;
     padding: 10px 25px;
-    border: none;
     font-family: "Noto Serif";
 }
 
@@ -116,7 +142,7 @@ body {
     background: #808080;
 }
 
-/* Avaliações */
+/* AVALIACOES */
 
 .avaliacoes {
     grid-column: 2;
@@ -127,15 +153,15 @@ body {
 }
 
 .avaliacao {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
     padding-bottom: 20px;
 }
 
 .avaliacao_descricao {
     color: rgba(0, 0, 0, .7);
+    margin: 20px 0 5px 0;
 }
 
 .avaliacao_usuario {
     font-weight: bold;
-    line-height: 0px;
 }
